@@ -1,0 +1,49 @@
+
+.crystals{
+    display:flex;
+    justify-content:space-around;
+ 
+    align-items:center;
+  
+}
+
+.crystal{
+    border:1px solid green;
+    height:50px;
+    width:50px;
+    box-shadow:3px 3px 3px rgba(0, 0, 0, 0.5);
+  
+
+}
+
+img{
+    width:25px;
+    
+}
+
+body{
+    background-image:url('https://img.freepik.com/free-vector/crystal-textured-background-illustration_53876-80624.jpg?size=338&ext=jpg') ;
+}
+
+#result{
+    color:green;
+    font-size:40px;
+}
+
+#numbefore{
+   
+    color:green;
+    font-size:40px;
+}
+#win{
+    color:green;
+    font-size:40px;
+}
+#lost{  color:green;
+    font-size:40px;
+
+}
+H1{
+    color:orangered;
+    font-size:40px;
+}

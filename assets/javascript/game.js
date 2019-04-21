@@ -1,44 +1,65 @@
-// creat a random numbers between 0-40
-var gamerNumbers = [];
-for (let index = 0; index < 40; index++) {
-    gamerNumbers.push(Math.floor(Math.random()*40))
-    
+var computer_random;
+var lost = 0;
+var win = 0;
+var numbefore = 0;
+
+var restAndStart = function () {
+
+    $(".crystals").empty();
+    let images =['http://thumbs.dreamstime.com/z/blue-gem-1312967.jpg',
+    'https://cdn4.iconfinder.com/data/icons/free-crystal-icons/512/Emerald.png',
+    'https://cdn3.vectorstock.com/i/1000x1000/32/97/crystal-gem-icon-for-game-ui-vector-16193297.jpg',
+    'https://cdn2.iconfinder.com/data/icons/diamonds-1/128/DiamondBlue-512.png'];
+
+    computer_random = Math.floor(Math.random() * 60) + 30;
+
+    $("#result").html('computer_random: ' + computer_random);
+  
+    for (var i = 0; i < 4; i++) {
+
+        var random = Math.floor(Math.random() * 11) + 1;
+
+        var crystal = $("<div>");
+        crystal.attr({
+            "class": 'crystal',
+            "data-random": random
+
+        });
+        crystal.css({
+           "background-image":"url('" + images[i] + "')",
+           "background-size":"cover"
+
+        });
+
+
+        $(".crystals").append(crystal);
+
+    }
+    $("#numbefore").html("Total score: " +  numbefore);
 }
-console.log(gamerNumbers)
 
-// create a random numbers for crystals 0-15
-var crystalNumber=Math.floor(Math.random()*15);
-console.log(crystalNumber);
+restAndStart();
 
-// sum the total number of crystal 
-
-// need on click function for button with jquerry
-$(document).ready(function (){
-   
-    
-    
-    
-    $('#box').on('click', function() {
-      computer = Math.floor(Math.random() * 4); 
-      console.log("Computer Choice: " + gamerNumbers[0]);
-      
-  });
-  $('#triangle').on('click', function() {
-    computer = Math.floor(Math.random() * 4); 
-    console.log("Computer Choice: " + gamerNumbers[1]);
-    
+$(document).on('click',".crystal", function () {
+    var num = parseInt($(this).attr('data-random'));
+    numbefore += num;
+    $("#numbefore").html("Total score:" +  numbefore);
+    console.log( numbefore);
+    if ( numbefore >computer_random ) {
+        lost++;
+        $("#lost").html("you lost: " + lost);
+        numbefore = 0;
+        
+        restAndStart();
+       
+    }
+    else if ( numbefore === computer_random) {
+        win++;
+        $("#win").html("you win: " + win);
+        numbefore = 0;
+        
+        restAndStart();
+        
+    }
 });
-$('#circle').on('click', function() {
-    computer = Math.floor(Math.random() * 4); 
-    console.log("Computer Choice: " + gamerNumbers[2]);
-    
-});
-$('#box').on('click', function() {
-    computer = Math.floor(Math.random() * 4); 
-    console.log("Computer Choice: " + gamerNumbers[0]);
-    
-});
-    
-});
-
 
